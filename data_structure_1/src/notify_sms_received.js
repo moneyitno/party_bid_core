@@ -5,7 +5,9 @@ function notify_sms_received(sms_json){
         var name = message.substr(2);
         var phone = sms_json.messages[0].phone;
         var even = _.find(activities,function(activity){return activity.name == localStorage.current_activity});
-        even.sign_ups.unshift({'name':name,'phone':phone});
-        localStorage.setItem('activities',JSON.stringify(activities));
+        if(!_.find(even.sign_ups,function(sign_up){return sign_up.phone == phone})){
+            even.sign_ups.unshift({'name':name,'phone':phone});
+            localStorage.setItem('activities',JSON.stringify(activities));
+        }
     }
 }
