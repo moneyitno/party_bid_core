@@ -14,7 +14,7 @@ describe("Activity", function() {
 
         var activity = new Activity(activity_name);
         activity.create();
-        activity.active(activity_name);
+        activity.active();
 
         var activity_json = JSON.parse(localStorage.activities);
         expect(activity_json.length).toBe(1);

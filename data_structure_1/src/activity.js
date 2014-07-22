@@ -10,6 +10,6 @@ Activity.prototype.create = function(){
     localStorage.setItem('activities',JSON.stringify(activities));
 };
 
-Activity.prototype.active = function(activity_name){
-    localStorage.setItem('current_activity',activity_name);
+Activity.prototype.active = function(){
+    localStorage.setItem('current_activity',this.name);
 };
