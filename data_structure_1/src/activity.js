@@ -9,3 +9,7 @@ Activity.prototype.create = function(){
     activities.unshift(this);
     localStorage.setItem('activities',JSON.stringify(activities));
 };
+
+Activity.prototype.active = function(activity_name){
+    localStorage.setItem('current_activity',activity_name);
+};
