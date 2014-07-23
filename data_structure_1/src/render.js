@@ -14,3 +14,10 @@ transform_biddings_to_view_model = function (current_activity, bidName) {
         return bid.name == bidName
     }).biddings
 };
+
+render_sign_ups = function (current_activity) {
+    var activities = JSON.parse(localStorage.activities);
+    return _.find(activities, function (activity) {
+        return activity.name == current_activity
+    }).sign_ups
+};
