@@ -6,6 +6,16 @@ describe("Bidding", function() {
         init_activity_database();
         init_two_activity();
         init_sign_ups();
+        var bids = [
+            {
+                name: "竞价1",
+                activity_id: "1",
+                biddings: []
+
+            }
+
+        ];
+        localStorage.bids = JSON.stringify(bids);
         localStorage.current_activity = "1";
         localStorage.current_bid = "竞价1";
         localStorage.is_bidding = "";
