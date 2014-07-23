@@ -57,7 +57,7 @@ bidding_success = function (phone, price, activities) {
 };
 
 bidding_end = function (activities) {
-    if (!localStorage.is_signing_up || localStorage.is_signing_up == "false") {
+    if (!localStorage.is_bidding || localStorage.is_bidding == "false") {
         activities[localStorage.current_activity_id].biddings[localStorage.current_bid] = [];
     }
 };
