@@ -53,7 +53,13 @@ bidding_start = function (phone, price, activities) {
 };
 
 bidding_success = function (phone, price, activities) {
-    activities[localStorage.current_activity_id].biddings[localStorage.current_bid].unshift({'phone': phone, 'price': price});
+    var bids = activities[localStorage.current_activity_id].biddings[localStorage.current_bid];
+    if (!_.find(bids, function (bid) {
+        return bid.phone == phone
+    })) {
+        activities[localStorage.current_activity_id].biddings[localStorage.current_bid].unshift({'phone': phone, 'price': price});
+
+    }
 };
 
 bidding_end = function (activities) {
