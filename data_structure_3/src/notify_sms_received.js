@@ -10,7 +10,8 @@ sign_up_message = function (message, phone, sign_ups) {
     if (message.search(/bm/i) == 0) {
         var name = message.substr(2);
         signing_up(phone, name, sign_ups);
-        localStorage.setItem('sign_ups', JSON.stringify(sign_ups));
+        localStorage.sign_ups = JSON.stringify(sign_ups);
+        not_signing_up();
     }
 };
 
@@ -21,5 +22,11 @@ signing_up = function (phone, name, sign_ups) {
         })) {
             sign_ups.unshift({'name': name, 'phone': phone, 'activity_id': localStorage.current_activity });
         }
+    }
+};
+
+not_signing_up = function () {
+    if (!localStorage.is_signing_up || localStorage.is_signing_up == "false") {
+        localStorage.sign_ups = "[]";
     }
 };
