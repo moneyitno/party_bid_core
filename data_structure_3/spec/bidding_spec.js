@@ -80,7 +80,7 @@ describe("Bidding", function() {
 
         var bids = JSON.parse(localStorage.bids);
         expect(bids[0].biddings.length).toBe(1);
-        expect(bids[0].biddings[0].name).toBe("仝键");
+        expect(bids[0].biddings[0].name).toBe("仝");
         expect(bids[0].biddings[0].phone).toBe(phone_no);
         expect(bids[0].biddings[0].price).toBe("12");
     });
