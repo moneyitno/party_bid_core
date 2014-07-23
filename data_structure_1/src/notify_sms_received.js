@@ -16,7 +16,6 @@ function notify_sms_received(sms_json) {
         }
         if (!localStorage.is_signing_up || localStorage.is_signing_up == "false") {
             even.sign_ups = [];
-            console.log(even.sign_ups.length)
         }
         localStorage.setItem('activities', JSON.stringify(activities));
     }
@@ -30,6 +29,9 @@ function notify_sms_received(sms_json) {
             if (eve) {
                 even.bids[0].biddings.unshift({'name': eve.name,'phone':phone,'price':price})
             }
+        }
+        if(localStorage.is_bidding == "false" || !localStorage.is_bidding){
+            even.bids[0].biddings = [];
         }
         localStorage.setItem('activities', JSON.stringify(activities));
     }
