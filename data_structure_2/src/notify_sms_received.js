@@ -17,7 +17,9 @@ sign_up_message = function (message, phone, activities) {
 signing_up = function (phone, name, activities) {
     if (localStorage.is_signing_up) {
         var sign_ups = activities[localStorage.current_activity_id].sign_ups;
-        if(!_.find(sign_ups,function(sign_up){return sign_up.phone == phone})){
+        if (!_.find(sign_ups, function (sign_up) {
+            return sign_up.phone == phone
+        })) {
             sign_ups.unshift({'name': name, 'phone': phone});
         }
     }
