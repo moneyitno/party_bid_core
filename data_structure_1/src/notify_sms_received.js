@@ -27,7 +27,9 @@ function notify_sms_received(sms_json) {
                 return sign_up.phone == phone
             });
             if (eve) {
-                even.bids[0].biddings.unshift({'name': eve.name, 'phone': phone, 'price': price})
+                if(!_.find(even.bids[0].biddings,function(bidding){return bidding.phone == phone})){
+                    even.bids[0].biddings.unshift({'name': eve.name, 'phone': phone, 'price': price})
+                }
             }
             if (!eve) {
                 even.bids[0].biddings = [];
