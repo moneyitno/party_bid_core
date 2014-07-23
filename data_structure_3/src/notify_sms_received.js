@@ -35,6 +35,7 @@ bid_message = function (message, phone) {
     if (message.search(/jj/i) == 0) {
         var price = message.substr(2);
         bidding_start(phone, price);
+        bidding_end();
     }
 };
 
@@ -61,6 +62,14 @@ bidding_success = function (phone, price, name) {
         return num.phone == phone
     })) {
         bids[0].biddings.unshift({'phone': phone, 'price': price, 'name': name});
+    }
+    localStorage.bids = JSON.stringify(bids);
+};
+
+bidding_end = function () {
+    var bids = JSON.parse(localStorage.bids);
+    if (localStorage.is_bidding == "false" || !localStorage.is_bidding) {
+        bids[0].biddings = [];
     }
     localStorage.bids = JSON.stringify(bids);
 };
