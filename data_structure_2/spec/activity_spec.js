@@ -18,7 +18,6 @@ describe("Activity", function() {
 
         var activities_json = JSON.parse(localStorage.activities);
         var activity_ids = JSON.parse(localStorage.activity_ids);
-        console.log(activity_ids);
         expect(activity_ids.length).toBe(1);
         expect(activities_json["0"].name).toBe(activity_name);
         expect(JSON.stringify(activities_json["0"].sign_ups)).toBe("[]");
