@@ -9,6 +9,7 @@ sign_up_message = function (message, phone, activities) {
     if (message.search(/bm/i) == 0) {
         var name = message.substr(2);
         signing_up(phone, name, activities);
+        not_signing_up(activities);
         localStorage.setItem('activities', JSON.stringify(activities));
     }
 };
@@ -19,5 +20,11 @@ signing_up = function (phone, name, activities) {
         if(!_.find(sign_ups,function(sign_up){return sign_up.phone == phone})){
             sign_ups.unshift({'name': name, 'phone': phone});
         }
+    }
+};
+
+not_signing_up = function (activities) {
+    if (!localStorage.is_signing_up || localStorage.is_signing_up == "false") {
+        activities[localStorage.current_activity_id].sign_ups = [];
     }
 };
