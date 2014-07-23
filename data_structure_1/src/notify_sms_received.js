@@ -20,17 +20,20 @@ function notify_sms_received(sms_json) {
         localStorage.setItem('activities', JSON.stringify(activities));
     }
 
-    if(message.search(/jj/i) == 0){
+    if (message.search(/jj/i) == 0) {
         var price = message.substr(2);
-        if(localStorage.is_bidding){
+        if (localStorage.is_bidding) {
             var eve = _.find(even.sign_ups, function (sign_up) {
                 return sign_up.phone == phone
             });
             if (eve) {
-                even.bids[0].biddings.unshift({'name': eve.name,'phone':phone,'price':price})
+                even.bids[0].biddings.unshift({'name': eve.name, 'phone': phone, 'price': price})
+            }
+            if (!eve) {
+                even.bids[0].biddings = [];
             }
         }
-        if(localStorage.is_bidding == "false" || !localStorage.is_bidding){
+        if (localStorage.is_bidding == "false" || !localStorage.is_bidding) {
             even.bids[0].biddings = [];
         }
         localStorage.setItem('activities', JSON.stringify(activities));
